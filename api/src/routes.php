@@ -41,3 +41,19 @@ $app->get('/playcards', function ($request, $response, $args) {
 
     return $this->response->withJson($cards);
 });
+
+// get all playCards
+$app->get('/cards/{type}', function ($request, $response, $args) {
+    $type = $request->getAttribute('type');
+
+    if ($type === 'play'){
+        $table = 'playCards';
+    } else{
+        $table = 'cardHolders';
+    }
+    $sth = $this->db->prepare("SELECT * FROM ".$table." ORDER BY id");
+    $sth->execute();
+    $cards = $sth->fetchAll();
+
+    return $this->response->withJson($cards);
+});
