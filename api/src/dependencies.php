@@ -27,3 +27,16 @@ $container['db'] = function ($c) {
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $pdo;
 };
+
+$container['md5'] = function ($c) {
+    $settings = $c->get('settings')['db'];
+    define("SITE_KEY", $settings['key']);
+
+    /* API key encryption */
+    function apiKey($session_uid)
+    {
+        $key=md5(SITE_KEY.$session_uid);
+        return hash('sha256', $key.$_SERVER['REMOTE_ADDR']);
+    }
+    return api_key;
+};

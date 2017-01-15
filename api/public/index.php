@@ -14,6 +14,9 @@ require '../../vendor/autoload.php';
 
 session_start();
 
+$_SESSION['uid']='1';
+$session_uid=$_SESSION['uid'];
+
 // Инициализация
 $settings = require __DIR__ . '/../src/settings.php';
 $app = new \Slim\App($settings);

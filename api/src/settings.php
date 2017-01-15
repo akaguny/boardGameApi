@@ -20,7 +20,8 @@ return [
             "host" => "localhost",
             "dbname" => "angular-crud",
             "user" => "root",
-            "pass" => ""
+            "pass" => "",
+            "key" => file_get_contents(__DIR__ . '/key', NULL, NULL, 20, 14)
         ],
     ],
 ];
