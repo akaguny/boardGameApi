@@ -47,3 +47,5 @@ fabric.properties
 
 vendor/
 /slim-skeleton/
+/api/logs
+api/src/key
